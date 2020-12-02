@@ -8,15 +8,15 @@ DROP TABLE RAGREEMENT  CASCADE CONSTRAINTS;
 CREATE TABLE EMPLOYEE
 (EmpNo        NUMBER(10),
  Fname        VARCHAR2(25),
- Lname		  VARCHAR2(25),
- Position	  VARCHAR2(20),
- Phone		  CHAR(12),
- Email		  VARCHAR2(25),
+ Lname		      VARCHAR2(25),
+ Position	    VARCHAR2(20),
+ Phone		      CHAR(12),
+ Email		      VARCHAR2(25),
  DOB          DATE,
  Gender       VARCHAR(10),
  Salary       NUMBER(10),
  HireDate     DATE DEFAULT SYSDATE,
- OutNo		  NUMBER(10),
+ OutNo		      NUMBER(10),
  SupervisorNo NUMBER(10),
  CONSTRAINT   EMPLOYEE_EmpNo_PK PRIMARY KEY (EmpNo),
  CONSTRAINT   EMPLOYEE_Gender_CK CHECK (UPPER(Gender) in ('MALE', 'FEMALE')),
@@ -32,7 +32,7 @@ CREATE TABLE OUTLET
  City       VARCHAR2(25),
  State      VARCHAR2(2),
  ZipCode    CHAR(5),
- Phone	    CHAR(12),
+ Phone	     CHAR(12),
  ManagerNo  NUMBER(10),
  CONSTRAINT OUTLET_OutNo_PK PRIMARY KEY (OutNo),
  CONSTRAINT OUTLET_ManagerNo_FK FOREIGN KEY (ManagerNo) REFERENCES EMPLOYEE (EmpNo)
@@ -45,7 +45,7 @@ CREATE TABLE FAULTREPORT
  Comments    VARCHAR2(100),
  EmpNo       NUMBER(10),
  LicenseNo   VARCHAR2(10),
- RentalNo	 NUMBER(10),
+ RentalNo	   NUMBER(10),
  CONSTRAINT  FAULTREPORT_ReportNum_PK PRIMARY KEY (ReportNum),
  CONSTRAINT  FAULTREPORT_EmpNo_FK FOREIGN KEY (EmpNo) REFERENCES EMPLOYEE (EmpNo)
  );
@@ -56,8 +56,8 @@ CREATE TABLE VEHICLE
  Make           VARCHAR2(15),
  Model          VARCHAR2(15),
  Color          VARCHAR2(15),
- Year	 		NUMBER(10),
- NoDoors		NUMBER(1),
+ Year	 	       	NUMBER(10),
+ NoDoors		      NUMBER(1),
  Capacity       NUMBER(2),
  DailyRate      NUMBER(5),
  OutNo          NUMBER(10),
@@ -87,7 +87,7 @@ CREATE TABLE CLIENT
 CREATE TABLE RAGREEMENT
 (
  RentalNo      NUMBER(10),
- StartDate	   DATE DEFAULT TO_DATE('0001-01-01-00:00:00','YYYY-MM-DD-HH24:MI:SS') NOT NULL,
+ StartDate	    DATE DEFAULT TO_DATE('0001-01-01-00:00:00','YYYY-MM-DD-HH24:MI:SS') NOT NULL,
  ReturnDate	   DATE DEFAULT TO_DATE('0001-01-01-00:00:00','YYYY-MM-DD-HH24:MI:SS'),
  MileageBefore NUMBER(10),
  MileageAfter  NUMBER(10),
