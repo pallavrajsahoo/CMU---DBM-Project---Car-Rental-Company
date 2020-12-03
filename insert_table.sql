@@ -33,7 +33,7 @@ INSERT INTO Employee VALUES (4014, 'Goober', 'Stranger',  'Sales Rep', '821-380-
 INSERT INTO Employee VALUES (4015, 'Papageno', 'Gantlett', 'Sales Rep', '473-727-4311', 'pgantlettf@buycar.com', '02-JUL-1980', 'F', 57896, '10-JAN-2013',  4005, 203);
 INSERT INTO Employee VALUES (4016, 'Vamiller', 'Gandhi',  'Mechanic',  '414-102-7405', 'vgan@buycar.com', '14-MAR-1981', 'M', 58000, '12-MAR-2007', 4001, 211);
 INSERT INTO Employee VALUES (4017, 'Shubham', 'Jain',  'Mechanic',  '123-002-8405', 'sjain@buycar.com', '20-FEB-1990', 'M', 55000, '12-APR-2005', 4005, 212);
-INSERT INTO Employee VALUES (4018, 'Pallvraj', 'Sahoo',  'Mechanic',  '145-102-1258', 'pshaoo@buycar.com', '14-MAR-1987', 'M', 59000, '17-MAR-2003', 4002, 213);
+INSERT INTO Employee VALUES (4018, 'Pallavraj', 'Sahoo',  'Mechanic',  '145-102-1258', 'pshaoo@buycar.com', '14-MAR-1987', 'M', 59000, '17-MAR-2003', 4002, 213);
 INSERT INTO Employee VALUES (4019, 'Ray', 'Paulsen',  'Mechanic',  '196-102-7498', 'rpaul@buycar.com', '14-MAR-1978', 'M', 54256, '14-MAR-2005', 4001, 214);
 
 
