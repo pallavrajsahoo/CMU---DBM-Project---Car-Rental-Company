@@ -75,9 +75,9 @@ INSERT INTO VEHICLE VALUES ('3A3F3ASV', 'Chevrolet', 'Chevrolet Beat', 'White', 
 INSERT INTO VEHICLE VALUES ('2A2F4GVQ', 'Chevrolet', 'Chevrolet Cruze', 'Bluw', 2008, 4, 5, 46, '15-JUN-2017', 210);
 INSERT INTO VEHICLE VALUES ('2A3G35GV', 'Hyundai', 'Hyundai I10', 'Brown', 2010, 4, 5, 48, '14-JAN-2020', 212);
 
-INSERT INTO CLIENT VALUES (8001 , 'MaurisBlandit Institute','Ap #694-1423 Phasellus Road', 'Istres','PA','32328','http://eleifendnon.edu','Kareem','Conway','413-982-2045','quisque@eleifendnon.edu');
+INSERT INTO CLIENT VALUES (8001, 'MaurisBlandit Institute','Ap #694-1423 Phasellus Road', 'Istres','PA','32328','http://eleifendnon.edu','Kareem','Conway','413-982-2045','quisque@eleifendnon.edu');
 INSERT INTO CLIENT VALUES (8002, 'Nibhvulputate Industries', 'P.O. Box 127, 4991 Sed Road', 'Bairnsdale', 'CA', '90404', 'http://quisturpisvitae.org','Kitra','Monica', '309-174-0460', NULL);
-INSERT INTO CLIENT VALUES (8003, NULL, 'Ap #549-9943 Curabitur Rd.', 'Petrolina', 'FL', '32306', NULL, 'Elijah','Gilbert','699-379-7697' , NULL);
+INSERT INTO CLIENT VALUES (8003, 'Dunder Mifflin', 'Ap #549-9943 Curabitur Rd.', 'Petrolina', 'FL', '32306', NULL, 'Michael','Scott','699-379-7697' , NULL);
 INSERT INTO CLIENT VALUES (8004, 'Risus Company', '6921 South Avenue', 'Nanded', 'OK', '83707',  'http://Nunc.com','Kennedy','Flynn', '617-154-0124', 'velit@Nunc.com');
 INSERT INTO CLIENT VALUES (8005, 'Wundas Corporation', 'P.O. BOX 851', 'Seattle', 'WA', '98115',  'http://wundas.gov', 'Eden','Le','523-423-8451', 'leeden@wundas.gov');
 INSERT INTO CLIENT VALUES (8006, 'Orkut LLC', '63-1454 Tellus. Rd.', 'Blitar', 'NY', '12211',  'http://vestibulummassa.net','Xantha','Gonsales', '290-458-0981', 'xantha@vestibulummassa.net');
