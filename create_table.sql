@@ -11,7 +11,7 @@ CREATE TABLE EMPLOYEE
  Lname		  VARCHAR2(25),
  Position	  VARCHAR2(20),
  Phone		  VARCHAR2(12),
- Email		  VARCHAR2(50),
+ Email		  VARCHAR2(25),
  Dob          DATE,
  Gender       VARCHAR(10),
  Salary       NUMBER(10),
