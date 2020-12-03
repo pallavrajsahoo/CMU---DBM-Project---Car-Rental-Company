@@ -46,7 +46,7 @@ CREATE TABLE FAULTREPORT
  Comments    VARCHAR2(80),
  EmpNo       NUMBER(10),
  LicenseNo   VARCHAR2(10),
- RentalNo	 NUMBER(10),
+ RentalNo	   NUMBER(10),
  CONSTRAINT  FAULTREPORT_ReportNum_PK PRIMARY KEY (ReportNum),
  CONSTRAINT  FAULTREPORT_EmpNo_FK FOREIGN KEY (EmpNo) REFERENCES EMPLOYEE (EmpNo)
  );
@@ -57,8 +57,8 @@ CREATE TABLE VEHICLE
  Make           VARCHAR2(15),
  Model          VARCHAR2(25),
  Color          VARCHAR2(15),
- Year	 	NUMBER(4),
- NoDoors	NUMBER(1),
+ Year	 	        NUMBER(4),
+ NoDoors	       NUMBER(1),
  Capacity       NUMBER(2),
  DailyRate      NUMBER(5),
  InspectionDate DATE,
@@ -79,7 +79,7 @@ CREATE TABLE CLIENT
  WebAddress    VARCHAR2(50),
  Contact_FName VARCHAR2(25),
  Contact_LName VARCHAR2(25),
- Phone	       CHAR(12),
+ Phone	        CHAR(12),
  Email         VARCHAR2(50),
  CONSTRAINT    CLIENT_ClientNo_PK PRIMARY KEY (ClientNo)
  );
@@ -88,8 +88,8 @@ CREATE TABLE CLIENT
 CREATE TABLE RAGREEMENT
 (
  RentalNo      NUMBER(10),
- StartDate		DATE DEFAULT TO_DATE('0001-01-01-00:00:00','YYYY-MM-DD-HH24:MI:SS') NOT NULL,
- ReturnDate		DATE DEFAULT TO_DATE('0001-01-01-00:00:00','YYYY-MM-DD-HH24:MI:SS'),
+ StartDate		   DATE DEFAULT TO_DATE('0001-01-01-00:00:00','YYYY-MM-DD-HH24:MI:SS') NOT NULL,
+ ReturnDate		  DATE DEFAULT TO_DATE('0001-01-01-00:00:00','YYYY-MM-DD-HH24:MI:SS'),
  MileageBefore NUMBER(10),
  MileageAfter  NUMBER(10),
  InsuranceType VARCHAR2(30),
