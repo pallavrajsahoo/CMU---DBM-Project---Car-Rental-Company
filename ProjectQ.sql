@@ -6,17 +6,16 @@ SELECT r.rentalno,TO_CHAR(startdate, 'DD-MON-YYYY HH24:MI:SS') "Start Date",
 	   TO_CHAR(returndate, 'DD-MON-YYYY HH24:MI:SS') "Return Date",
        v.licenseno, outno "Outlet",make,
        model,year,TO_CHAR(DateChecked, 'DD-MON-YYYY HH24:MI:SS') "Date Checked"
-FROM faultreport f JOIN vehicle v on f.licenseno= v.licenseno
-				   JOIN ragreement r on f.rentalno = r.rentalno;
+FROM vehicle v join ragreement r on v.licenseno = r.licenseno
+			left outer join faultreport f on f.rentalno = r.rentalno
 				 
 #Query3
 SELECT distinct v.licenseno, v.make, v.model, TO_NUMBER(EXTRACT(YEAR FROM SYSDATE)) - v.year || ' years' "Vehicle Age", 
 				(SELECT MAX(mileageafter) FROM ragreement WHERE licenseno = v.licenseno) "Final Odometer Reading",
 				(SELECT MAX(mileageafter) FROM ragreement WHERE licenseno = v.licenseno) - (SELECT MAX(mileagebefore) FROM ragreement WHERE licenseno = v.licenseno) "Total Run", 
 				(SELECT COUNT(reportnum) FROM faultreport GROUP BY licenseno HAVING licenseno = v.licenseno ) AS "Number of Fault Reports"
-FROM 
-	faultreport f JOIN vehicle v ON f.licenseno = v.licenseno 
-				  JOIN ragreement r ON r.rentalno = f.rentalno 
+FROM vehicle v join ragreement r on v.licenseno = r.licenseno
+			left outer join faultreport f on f.rentalno = r.rentalno
 WHERE 
 	(EXTRACT(YEAR FROM SYSDATE) - v.Year) >= 3 ;
 
@@ -151,6 +150,28 @@ Select
 	(select Count(rentalno) from client join ragreement using(clientno) 
 	where webaddress is NULL AND TO_CHAR(startdate, 'Q') = TO_CHAR(sysdate, 'Q')-1 ) "#N.A"
 from dual;
-		 
+
+#Query19
+BREAK ON "Table Name" ON "Column Name"
+COLUMN "Table Name" FORMAT A15
+COLUMN "Column Name" FORMAT A15
+COLUMN "Constraint Name" FORMAT A17
+COLUMN "Search Condition" FORMAT A65
+COLUMN "Refer Table" FORMAT A11
+COLUMN "Refer Col." FORMAT A11
+SELECT Table_name "Table Name", Column_name "Column Name" , constraint_name "Constraint Name", 
+(CASE WHEN constraint_type  = 'P' THEN 'PK'
+      WHEN constraint_type = 'R' THEN 'FK'
+      WHEN constraint_type = 'U' THEN 'UK'
+      WHEN constraint_type = 'C' THEN SUBSTR(constraint_name,-2)
+      ELSE ' ' END) "Type",
+search_condition "Search Condition", NVL(tab_name,'Not a FK') "Refer Table", NVL(col_name,'Not a FK') "Refer Col."
+FROM USER_TAB_COLUMNS 
+LEFT OUTER JOIN USER_CONS_COLUMNS USING (table_name , column_name)
+LEFT OUTER JOIN USER_CONSTRAINTS USING (table_name , constraint_name) 
+LEFT OUTER JOIN
+(SELECT table_name AS tab_name, column_name as col_name, constraint_name As con_name                  
+FROM USER_CONS_COLUMNS) ON R_constraint_name = con_name
+ORDER BY table_name,column_ID;
 
 	
