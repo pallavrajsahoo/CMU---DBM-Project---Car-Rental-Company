@@ -34,6 +34,7 @@ CREATE TABLE OUTLET
  ZipCode    CHAR(7),
  Phone	    CHAR(12),
  ManagerNo  NUMBER(4),
+ CONSTRAINT OUTLET_STATE_CK CHECK (UPPER(State) in ('PA', 'WA' ,'CA', 'NC', 'NY', 'FL', 'VA', 'OH')),
  CONSTRAINT OUTLET_OutNo_PK PRIMARY KEY (OutNo),
  CONSTRAINT OUTLET_ManagerNo_FK FOREIGN KEY (ManagerNo) REFERENCES EMPLOYEE (EmpNo),
  CONSTRAINT Outlet_Phone_Ck CHECK (REGEXP_LIKE(phone,'^([0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{10})$'))
@@ -63,6 +64,7 @@ CREATE TABLE VEHICLE
  DailyRate      NUMBER(5),
  InspectionDate DATE,
  OutNo          NUMBER(3),
+ CONSTRAINT     VEHICLE_YEAR_CK CHECK (TO_NUMBER(YEAR) > 2010),
  CONSTRAINT     VEHICLE_LicenseNo_PK PRIMARY KEY (LicenseNo),
  CONSTRAINT     VEHICLE_OutNo_FK FOREIGN KEY (OutNo) REFERENCES OUTLET (OutNo)
  );
@@ -95,6 +97,7 @@ CREATE TABLE RAGREEMENT
  InsuranceType VARCHAR2(30),
  ClientNo      NUMBER(10),
  LicenseNo     VARCHAR2(10),
+ CONSTRAINT    RAGREEMENT_INS_TYPE_CK CHECK (INITCAP(InsuranceType) in ('Motorist Protection', 'Collision Coverage', 'Personal Injury Coverage')),
  CONSTRAINT    RAGREEMENT_RentalNo_PK  PRIMARY KEY (RentalNo),
  CONSTRAINT    RAGREEMENT_ClientNo_FK  FOREIGN KEY (ClientNo)  REFERENCES CLIENT  (ClientNo),
  CONSTRAINT    RAGREEMENT_LicenseNo_FK FOREIGN KEY (LicenseNo) REFERENCES VEHICLE (LicenseNo)
