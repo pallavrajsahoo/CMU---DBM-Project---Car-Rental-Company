@@ -25,6 +25,8 @@ WHERE
 COLUMN "Quarter" FORMAT A10
 BREAK ON "Quarter"
 SELECT  TO_CHAR(r.startdate,'Q') "Quarter", v.make "Make",
+	(Select Count(rentalno) from ragreement join vehicle using(licenseno)
+	 where make = v.make AND TO_CHAR(startdate,'Q') = TO_CHAR(r.startdate,'Q')) "Rentals by Make" ,
 	RANK() OVER (PARTITION BY TO_CHAR(startdate,'Q') ORDER BY (COUNT(f.reportnum) *100/(SELECT COUNT(rentalno) 
 																						FROM 
 																						ragreement JOIN vehicle using(licenseno)
