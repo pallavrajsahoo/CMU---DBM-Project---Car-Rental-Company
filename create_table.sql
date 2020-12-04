@@ -74,6 +74,7 @@ CREATE TABLE CLIENT
  Phone	        CHAR(12),
  Email         VARCHAR2(50),
  CONSTRAINT    CLIENT_ClientNo_PK PRIMARY KEY (ClientNo)
+ CONSTRAINT    Client_Phone_Ck    CHECK (REGEXP_LIKE(Phone,'^([0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{10})$'))
  );
  
  
