@@ -25,6 +25,8 @@ WHERE
 COLUMN "Quarter" FORMAT A10
 BREAK ON "Quarter"
 SELECT  TO_CHAR(r.startdate,'Q') "Quarter", v.make "Make",
+	(Select Count(rentalno) from ragreement join vehicle using(licenseno)
+	 where make = v.make AND TO_CHAR(startdate,'Q') = TO_CHAR(r.startdate,'Q')) "Rentals by Make" ,
 	RANK() OVER (PARTITION BY TO_CHAR(startdate,'Q') ORDER BY (COUNT(f.reportnum) *100/(SELECT COUNT(rentalno) 
 																						FROM 
 																						ragreement JOIN vehicle using(licenseno)
@@ -62,8 +64,8 @@ FROM  employee e JOIN outlet o ON e.outno = o.outno
 START WITH e.empno = 4000  CONNECT BY PRIOR e.empno = e.supervisorno;
 
 #Query11
-select Time, Start_Rentals, Return_Rentals ,(Start_Rentals + Return_Rentals) "T", 
-       To_Char((Ratio_to_report( Start_rentals + Return_Rentals) over ())*100, '9999.99') || '%' "T%" 
+select Time, Start_Rentals, Return_Rentals ,(Start_Rentals + Return_Rentals) "# of Transactions", 
+       To_Char((Ratio_to_report( Start_rentals + Return_Rentals) over ())*100, '9999.99') || '%' "Transactions" 
 from 
 	(Select Time, Count(rentalno) As Start_Rentals
 	from (select rentalno, (Case When to_char(startdate, 'HH24:MI') between '06:00' and '11:59' Then 'Morning'
@@ -81,7 +83,6 @@ from
     group by time) using (Time);
 
 #Query13
-set linesize 10000
 COLUMN "Outlet" FORMAT A10;
 COLUMN "Total" FORMAT A16;
 COLUMN MONDAY FORMAT A20;
@@ -105,7 +106,6 @@ From outlet join vehicle using(outno) join ragreement using(licenseno)
 where extract(MONTH from Sysdate) - extract(Month from startdate) <=3
 GROUP BY GROUPING SETS (outno, ());
 
-FROM ragreement JOIN vehicle USING(licenseno) JOIN outlet USING(outno) JOIN faultreport using(rentalno)
 #Query15
 COLUMN "Place" FORMAT A5;
 COLUMN "Proportion of Customers(%)" FORMAT A30;
